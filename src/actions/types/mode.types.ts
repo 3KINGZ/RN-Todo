@@ -1,0 +1,2 @@
+export const TOGGLE_DARK_MODE = "TOGGLE_DARK_MODE";
+export const TOGGLE_LIGHT_MODE = "TOGGLE_LIGHT_MODE";
