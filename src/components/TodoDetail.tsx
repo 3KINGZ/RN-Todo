@@ -4,7 +4,7 @@ import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
 import { useSelector, useDispatch } from "react-redux";
 
 import { clearCompletedTodo } from "../actions";
-import { COLORS } from "../constants";
+import { COLORS, FONTS } from "../constants";
 import { generateTodoBG } from "../utils";
 
 export const TodoDetail = () => {
@@ -42,6 +42,7 @@ const styles = StyleSheet.create({
     borderColor: COLORS.dark.veryDarkGrayishBlue,
   },
   text: {
+    ...FONTS.regular,
     color: COLORS.dark.veryDarkGrayishBlue,
     fontSize: 17,
   },

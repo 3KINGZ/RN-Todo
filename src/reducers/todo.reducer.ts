@@ -40,6 +40,10 @@ const modeReducer = (state = todos, action: { type: string; payload: any }) => {
       return todos;
     }
 
+    case types.RESET_TODOS: {
+      return payload;
+    }
+
     default:
       return state;
   }

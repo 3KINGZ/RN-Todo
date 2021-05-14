@@ -1,5 +1,5 @@
 /* eslint-disable no-undef */
-import React, { useState } from "react";
+import React from "react";
 import {
   SafeAreaView,
   View,
@@ -9,43 +9,32 @@ import {
   TouchableOpacity,
 } from "react-native";
 import Icon from "react-native-vector-icons/Ionicons";
-import { useSelector, useDispatch } from "react-redux";
-import { addTodo, toggleMode } from "./src/actions";
-import { CustomInput, Todos } from "./src/components";
+
+import { CustomInput, Todos, Filter } from "./src/components";
 import { generateMainBG } from "./src/utils";
+import { toggleMode } from "./src/actions";
+import { FONTS } from "./src/constants";
+import { useTodoAction } from "./src/hooks";
+import { useDispatch } from "react-redux";
 
 const lightImage = require("./src/assets/images/bg-mobile-light.jpg");
 const darkImage = require("./src/assets/images/bg-mobile-dark.jpg");
 
 const App = () => {
-  const mode = useSelector((state: IState) => state.mode);
+  const [_todos, mode, keyWord, setKeyWord, _addTodo, todo, setTodo] =
+    useTodoAction();
+
   const dispatch = useDispatch();
 
-  const [todo, setTodo] = useState("");
-
-  const _addTodo = () => {
-    if (todo) {
-      const todoObj = {
-        id: todo,
-        todo: todo,
-        completed: false,
-      };
-      dispatch(addTodo(todoObj));
-      setTodo("");
-    }
-  };
-
-  console.log(todo);
-
   return (
-    <SafeAreaView style={{ flex: 1 }}>
+    <SafeAreaView style={{ flex: 1, backgroundColor: generateMainBG(mode) }}>
       <ImageBackground
         style={styles.imageBackground}
         source={mode ? darkImage : lightImage}
       >
         <View style={styles.headerContainer}>
           <View style={styles.header}>
-            <Text style={styles.title}>Todo</Text>
+            <Text style={styles.title}>TODO</Text>
             {mode ? (
               <TouchableOpacity onPress={() => dispatch(toggleMode("light"))}>
                 <Icon name="sunny-outline" color="white" style={styles.icon} />
@@ -60,6 +49,7 @@ const App = () => {
           <CustomInput
             onChangeText={(text) => setTodo(text)}
             onSubmitEditing={_addTodo}
+            value={todo}
           />
         </View>
       </ImageBackground>
@@ -70,7 +60,8 @@ const App = () => {
           { backgroundColor: generateMainBG(mode) },
         ]}
       >
-        <Todos />
+        <Todos todos={_todos} />
+        <Filter onFilter={setKeyWord} activeKeyWord={keyWord} />
       </View>
     </SafeAreaView>
   );
@@ -91,9 +82,10 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
   },
   title: {
+    ...FONTS.regular,
     fontSize: 24,
     color: "white",
-    letterSpacing: 5,
+    letterSpacing: 7,
   },
   icon: {
     fontSize: 24,

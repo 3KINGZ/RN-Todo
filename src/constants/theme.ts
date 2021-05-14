@@ -21,7 +21,7 @@ export const FONTS = {
     fontSize: 18,
   },
   italic: {
-    fontFamily: "JosefinSans-Medium",
+    fontFamily: "JosefinSans-Italic",
     fontSize: 18,
   },
 };

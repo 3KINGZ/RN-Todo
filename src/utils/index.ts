@@ -13,5 +13,5 @@ export const generateTextColor = (darkMode: boolean) => {
 };
 
 export const generateMainBG = (darkMode: boolean) => {
-  return darkMode ? COLORS.dark.veryDarkBlue : COLORS.light.veryLightGray;
+  return darkMode ? COLORS.dark.veryDarkBlue : COLORS.light.lightGrayishBlue;
 };

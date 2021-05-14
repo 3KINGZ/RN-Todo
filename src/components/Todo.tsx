@@ -7,6 +7,7 @@ import Icon from "react-native-vector-icons/Feather";
 import { Checkbox } from "./Checkbox";
 import { generateTodoBG, generateTextColor } from "../utils";
 import { deleteTodo, markTodoComplete } from "../actions";
+import { FONTS } from "../constants";
 
 export const Todo = ({
   todo,
@@ -82,7 +83,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
   },
   todoText: {
-    fontSize: 18,
+    ...FONTS.regular,
     marginLeft: 10,
   },
   firstTodo: {
@@ -90,7 +91,7 @@ const styles = StyleSheet.create({
     borderTopRightRadius: 8,
   },
   completedTodo: {
-    fontSize: 18,
+    ...FONTS.italic,
     marginLeft: 10,
     textDecorationLine: "line-through",
     textDecorationStyle: "solid",
