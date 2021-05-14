@@ -35,12 +35,10 @@ export const Filter = ({
   return (
     <View style={[styles.container, { backgroundColor: generateTodoBG(mode) }]}>
       <FlatList
-        // style={{ flexDirection: "row", justifyContent: "space-between" }}
         contentContainerStyle={{
           justifyContent: "space-evenly",
           flexDirection: "row",
         }}
-        // horizontal
         data={["All", "Active", "Completed"]}
         keyExtractor={(item) => item}
         renderItem={({ item }) => (
