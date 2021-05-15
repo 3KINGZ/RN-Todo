@@ -7,6 +7,7 @@ import {
   ImageBackground,
   StyleSheet,
   TouchableOpacity,
+  StatusBar,
 } from "react-native";
 import Icon from "react-native-vector-icons/Ionicons";
 
@@ -28,6 +29,11 @@ const App = () => {
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: generateMainBG(mode) }}>
+      <StatusBar
+        animated={true}
+        backgroundColor={generateMainBG(mode)}
+        barStyle={mode ? "light-content" : "dark-content"}
+      />
       <ImageBackground
         style={styles.imageBackground}
         source={mode ? darkImage : lightImage}
