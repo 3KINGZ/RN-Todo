@@ -1,7 +1,7 @@
 /* eslint-disable no-undef */
 import * as types from "../actions/types";
 
-const todos: ITodo[] = [
+const initialState: ITodo[] = [
   {
     id: "1",
     todo: "Sleep",
@@ -14,7 +14,10 @@ const todos: ITodo[] = [
   },
 ];
 
-const modeReducer = (state = todos, action: { type: string; payload: any }) => {
+const modeReducer = (
+  state = initialState,
+  action: { type: string; payload: any },
+) => {
   const { type, payload } = action;
 
   switch (type) {

@@ -1,19 +1,19 @@
 import * as types from "../actions/types";
 
-const darkMode: boolean = true;
+const initialState: boolean = true;
 
 const modeReducer = (
-  state = darkMode,
+  state = initialState,
   action: { type: string; payload: any },
 ) => {
   const { type } = action;
 
   switch (type) {
     case types.TOGGLE_DARK_MODE:
-      return (state = true);
+      return true;
 
     case types.TOGGLE_LIGHT_MODE:
-      return (state = false);
+      return false;
 
     default:
       return state;
