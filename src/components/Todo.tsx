@@ -9,20 +9,18 @@ import { generateTodoBG, generateTextColor } from "../utils";
 import { deleteTodo, markTodoComplete } from "../actions";
 import { FONTS } from "../constants";
 
-export const Todo = ({
-  todo,
-  first,
-}: {
+interface ITodoC {
   todo: ITodo;
   first: boolean | (() => boolean);
-}) => {
+}
+
+export const Todo = ({ todo, first }: ITodoC) => {
+  const dispatch = useDispatch();
+  const mode = useSelector((state: IState) => state.mode);
+
   const { id, todo: todoText, completed } = todo;
 
-  const mode = useSelector((state: IState) => state.mode);
-  const dispatch = useDispatch();
-
   const _deleteTodo = () => {
-    console.log("idd");
     dispatch(deleteTodo(id));
   };
 

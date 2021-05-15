@@ -8,6 +8,7 @@ import {
   TouchableOpacity,
 } from "react-native";
 import { useSelector } from "react-redux";
+
 import { COLORS, FONTS } from "../constants";
 import { generateTodoBG } from "../utils";
 
@@ -17,19 +18,18 @@ interface IKeyWord {
   onFilter: any;
 }
 
+interface IFilter {
+  activeKeyWord: string;
+  onFilter: any;
+}
+
 const KeyWord = ({ keyWord, isActive, onFilter }: IKeyWord) => (
   <TouchableOpacity onPress={() => onFilter(keyWord.toLowerCase())}>
     <Text style={isActive ? styles.active : styles.word}>{keyWord}</Text>
   </TouchableOpacity>
 );
 
-export const Filter = ({
-  activeKeyWord,
-  onFilter,
-}: {
-  activeKeyWord: string;
-  onFilter: any;
-}) => {
+export const Filter = ({ activeKeyWord, onFilter }: IFilter) => {
   const mode = useSelector((state: IState) => state.mode);
 
   return (

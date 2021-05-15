@@ -1,17 +1,17 @@
 /* eslint-disable no-undef */
 import React, { useCallback } from "react";
-import { View, FlatList, TouchableOpacity } from "react-native";
+import { View, TouchableOpacity } from "react-native";
 import DraggableFlatList, {
   RenderItemParams,
 } from "react-native-draggable-flatlist";
 import { useDispatch } from "react-redux";
-import { resetTodos } from "../actions";
 
+import { resetTodos } from "../actions";
 import { COLORS } from "../constants";
 import { Todo } from "./Todo";
 import { TodoDetail } from "./TodoDetail";
 
-export const Todos = ({ todos }) => {
+export const Todos = ({ todos }: { todos: ITodo[] }) => {
   const dispatch = useDispatch();
 
   const Seperator = () => (
@@ -24,11 +24,11 @@ export const Todos = ({ todos }) => {
   );
 
   const renderItem = useCallback(
-    ({ item, index, drag, isActive }: RenderItemParams<Item>) => {
+    ({ item, drag, isActive }: RenderItemParams<ITodo>) => {
       return (
         <TouchableOpacity
           style={{
-            backgroundColor: isActive ? "red" : item.backgroundColor,
+            backgroundColor: isActive ? "red" : "",
             alignItems: "center",
             justifyContent: "center",
           }}
@@ -41,18 +41,14 @@ export const Todos = ({ todos }) => {
     [],
   );
 
-  const _resetTodos = (todos) => {
+  const _resetTodos = (todos: ITodo[]) => {
     dispatch(resetTodos(todos));
   };
 
   return (
     <DraggableFlatList
       style={{
-        // backgroundColor: "yellow",
         top: "-13%",
-        // borderRadius: 8,
-        // overflow: "hidden",
-        // width: "100%",
       }}
       data={todos}
       renderItem={renderItem}

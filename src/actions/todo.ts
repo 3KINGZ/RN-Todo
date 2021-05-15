@@ -5,7 +5,6 @@ export const addTodo = (todo: any) => async (dispatch: any) => {
 };
 
 export const deleteTodo = (id: string) => async (dispatch: any) => {
-  console.log("id", id);
   dispatch({ type: types.DELETE_TODO, payload: id });
 };
 
