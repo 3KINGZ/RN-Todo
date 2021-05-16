@@ -1,5 +1,5 @@
 /* eslint-disable no-undef */
-import React, { useEffect } from "react";
+import React from "react";
 import {
   SafeAreaView,
   View,
@@ -53,7 +53,7 @@ const App = () => {
           </View>
 
           <CustomInput
-            onChangeText={(text) => setTodo(text)}
+            onChangeText={(text: string) => setTodo(text)}
             onSubmitEditing={_addTodo}
             value={todo}
           />
