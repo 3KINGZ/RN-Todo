@@ -1,18 +1,7 @@
 /* eslint-disable no-undef */
 import * as types from "../actions/types";
 
-const initialState: ITodo[] = [
-  {
-    id: "1",
-    todo: "Sleep",
-    completed: true,
-  },
-  {
-    id: "2",
-    todo: "Eat",
-    completed: true,
-  },
-];
+const initialState: ITodo[] = [];
 
 const modeReducer = (
   state = initialState,

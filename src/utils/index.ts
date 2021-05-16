@@ -1,5 +1,7 @@
 import { COLORS } from "../constants";
 
+export * from "./cache";
+
 export const generateTodoBG = (darkMode: boolean) => {
   return darkMode
     ? COLORS.dark.veryDarkDesaturatedBlue
