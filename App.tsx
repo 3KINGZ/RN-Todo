@@ -1,5 +1,5 @@
 /* eslint-disable no-undef */
-import React from "react";
+import React, { useEffect } from "react";
 import {
   SafeAreaView,
   View,
@@ -8,6 +8,7 @@ import {
   StyleSheet,
   TouchableOpacity,
   StatusBar,
+  useColorScheme,
 } from "react-native";
 import Icon from "react-native-vector-icons/Ionicons";
 
@@ -26,6 +27,13 @@ const App = () => {
     useTodoAction();
 
   const dispatch = useDispatch();
+  const color = useColorScheme();
+
+  useEffect(() => {
+    if (color) {
+      dispatch(toggleMode(color));
+    }
+  }, []);
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: generateMainBG(mode) }}>
